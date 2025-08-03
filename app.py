@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 import joblib
 import pandas as pd
 
-app = Flask(_name_)
+app = Flask(__name__)
 
 # Load model
 model = joblib.load("chennai_crime_predictor.joblib")
@@ -27,5 +27,5 @@ def predict():
     result = {feature: prediction[0][i] for i, feature in enumerate(output_features)}
     return jsonify(result)
 
-if _name_ == '_main_':
+if __name__ == '__main__':
     app.run(debug=True)
